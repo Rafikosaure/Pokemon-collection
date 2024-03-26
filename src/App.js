@@ -13,7 +13,7 @@ function App() {
       setPokemons(data);
     })
     console.log(pokemons)
-  }, []);
+  }, [pokemons]);
 
   return (
     <div className="App">
