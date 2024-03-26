@@ -8,7 +8,6 @@ function App() {
   useEffect(() => {
     fetch("https://pokebuildapi.fr/api/v1/pokemon/limit/151")
     .then(response => response.json())
-    // .then(data => console.log(data))
     .then((data) => {
       setPokemons(data);
     })
