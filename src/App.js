@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+
+  const [pokemons, setPokemons] = useState([])
+ 
+  useEffect(() => {
+    fetch("https://pokebuildapi.fr/api/v1/pokemon/limit/151")
+    .then(response => response.json())
+    // .then(data => console.log(data))
+    .then((data) => {
+      setPokemons(data);
+    })
+    console.log(pokemons)
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {pokemons.map((pokemon) => 
+      <div className='card' key={pokemon.id}>
+        <h2>{pokemon.name}</h2>
+        <div className='image-container'>
+          <img src={pokemon.image} alt="Pokémon" />
+        </div>
+        <div className='stats'>
+          <p>Points de vie : {pokemon.stats.HP}</p>
+          <p>Attaque : {pokemon.stats.attack}</p>
+          <p>Défense : {pokemon.stats.defense}</p>
+          <div>
+            {pokemon.apiTypes.map((type) =>
+              <p>Type : {type.name} <img className='type-image' src={type.image} alt="type de pokemon" /></p>
+            )}
+          </div>
+        </div> 
+      </div>)}
+      
     </div>
-  );
+  )
 }
 
 export default App;
