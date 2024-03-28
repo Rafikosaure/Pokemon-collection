@@ -28,7 +28,7 @@ function App() {
           <p>Défense : {pokemon.stats.defense}</p>
           <div>
             {pokemon.apiTypes.map((type) =>
-              <p>Type : {type.name} <img className='type-image' src={type.image} alt="type de pokemon" /></p>
+              <p className='type-name'>Type : {type.name}<img className='type-image' src={type.image} alt="type de pokemon" /></p>
             )}
           </div>
         </div> 
