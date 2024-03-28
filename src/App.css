@@ -44,14 +44,15 @@
 
 .card {
   width: 280px;
-  height: 500px;
+  height: 510px;
   margin: 40px;
-  background-color: aquamarine;  
+  background-color: pink;  
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   border: solid 2px grey;
 }
 
